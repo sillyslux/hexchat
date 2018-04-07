@@ -349,7 +349,7 @@ class Context:
             command(string)
 
     def get_info(self, name):
-        with self._change_context():
+        with self.__change_context():
             return get_info(name)
 
     def get_list(self, name):
