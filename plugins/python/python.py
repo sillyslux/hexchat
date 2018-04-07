@@ -425,7 +425,7 @@ def _on_plugin_init(plugin_name, plugin_desc, plugin_version, arg):
     try:
         libdir = ffi.string(lib.hexchat_get_info(lib.ph, b'libdirfs')).decode()
         modpath = os.path.join(libdir, '..', 'python')
-        sys.path.append(modpath)
+        sys.path.append(os.path.abspath(modpath))
         hexchat = importlib.import_module('hexchat')
     except (UnicodeDecodeError, ImportError) as e:
         lib.hexchat_print(lib.ph, b'Failed to import module: ' + e.message.encode())
